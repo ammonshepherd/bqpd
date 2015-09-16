@@ -7,8 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
 
-<%= yield %>
+    <%= render "layouts/menu" %>
+
+    <div id="main">
+        <div class="header">
+            <h1>Projects Dashboard</h1>
+            <h2>View projects and their status here</h2>
+        </div>
+
+        <div class="content">
+
+
+            <%= yield %>
+
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

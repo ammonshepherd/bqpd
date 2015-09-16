@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.pure-menu-heading {
+    text-transform: none;
+    text-align: center;
+    color: #565d64;
+}
+
+#menu .pure-menu-heading {
+  font-size: 200%;
+}
