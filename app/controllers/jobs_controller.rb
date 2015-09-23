@@ -61,6 +61,16 @@ class JobsController < ApplicationController
     end
   end
 
+  # GET /deploy/1
+  def deploy
+    @project = Project.find(params[:id])
+    logger.info ""
+    logger.info "run deploy script"
+    logger.info @project.inspect
+    logger.info ""
+    render 'projects/show'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

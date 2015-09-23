@@ -11,29 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916125233) do
+ActiveRecord::Schema.define(version: 20150923192506) do
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "command"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "task_id"
+    t.string   "task_name"
+    t.string   "log"
   end
 
-  create_table "jobs_projects", id: false, force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "job_id",     null: false
-  end
-
-  add_index "jobs_projects", ["job_id"], name: "index_jobs_projects_on_job_id"
-  add_index "jobs_projects", ["project_id"], name: "index_jobs_projects_on_project_id"
+  add_index "jobs", ["task_id"], name: "index_jobs_on_task_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "default_task_id"
+  end
+
+  add_index "projects", ["default_task_id"], name: "index_projects_on_default_task_id"
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "command"
   end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
 end

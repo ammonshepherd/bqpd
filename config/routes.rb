@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+
+  resources :tasks
+  root 'dashboard#index'
+
+  get 'deploy/:id', to: 'jobs#deploy', as: :deploy
+
   resources :jobs
   resources :projects
   resources :dashboard
 
-  root 'dashboard#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

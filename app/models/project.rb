@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 
-  has_many :jobs
+  has_many :tasks
+  has_many :jobs, through: :tasks
 
 end
