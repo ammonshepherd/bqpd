@@ -15,7 +15,7 @@
           <h2><%= project.title %></h2>
           <p><%= project.description %></p>
         </td>
-        <td><%= link_to 'Deploy', deploy_path(project), class: 'pure-button button-success button-xlarge' %></td>
+        <td><%= link_to 'Deploy', deploy_path(project), class: 'pure-button button-success button-xlarge' if project.has_tasks %></td>
       </tr>
     <% end %>
   </tbody>

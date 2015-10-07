@@ -14,5 +14,11 @@
   <p><%= job %> </p>
 <% end %>
 
+
+<% @project.tasks.each do | task | %>
+  <p><%= task %> </p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

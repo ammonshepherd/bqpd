@@ -67,6 +67,7 @@ class JobsController < ApplicationController
     logger.info ""
     logger.info "run deploy script"
     logger.info @project.inspect
+    logger.info @project.id
     logger.info ""
     render 'projects/show'
   end
