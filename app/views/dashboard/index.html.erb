@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table class="pure-table pure-table-horizontal">
+<table class="pure-table pure-table-horizontal pure-table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -12,7 +12,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td>
-          <h2><%= project.title %></h2>
+          <h2><%= link_to project.title, project %></h2>
           <p><%= project.description %></p>
         </td>
         <td><%= link_to 'Deploy', deploy_path(project), class: 'pure-button button-success button-xlarge' if project.has_tasks %></td>

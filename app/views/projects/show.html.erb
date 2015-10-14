@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+[<%= link_to 'Projects List', projects_path %>]
+
+<ul class="project-menu">
+  <li><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit', edit_project_path(@project) %> </li>
+  <li><i class="fa fa-times"></i> <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+</ul>
+
 <p>
   <strong>Title:</strong>
   <%= @project.title %>
@@ -10,15 +17,31 @@
   <%= @project.description %>
 </p>
 
+<table class="pure-table pure-table-horizontal pure-table-striped">
+  <thead>
+    <tr>
+      <th colspan="2"><h2>Available Tasks</h2></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project.tasks.each do | task | %>
+      <tr>
+        <td>
+          <h3><%= link_to task.title, edit_task_path(task) %></h3>
+          <p><%= task.description %></p>
+        </td>
+
+        <td>
+          <p><%= link_to 'RUN', deploy_path(@project), class: 'pure-button button-success button-xlarge' %></p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
 <% @project.jobs.each do | job | %>
-  <p><%= job %> </p>
+  <p><%= job.title %> </p>
 <% end %>
-
-
-<% @project.tasks.each do | task | %>
-  <p><%= task %> </p>
-<% end %>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

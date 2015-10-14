@@ -1,3 +1,27 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project-menu li {
+  display: inline;
+  list-style-type: none;
+  margin-right: 10px;
+}
+
+.project-task-box {
+  border: 1px solid #eee;
+}
+
+.project-task-header {
+  background: #bbb;
+  color: #111;
+  padding: 5px 15px;
+}
+
+.project-tasks-list {
+  padding: 20px;
+}
+
+ul.project-menu {
+  -webkit-padding-start: 0px;
+}
