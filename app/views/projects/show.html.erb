@@ -1,21 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-[<%= link_to 'Projects List', projects_path %>]
+[ <%= link_to 'Projects List', projects_path %> ]
 
-<ul class="project-menu">
-  <li><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit', edit_project_path(@project) %> </li>
-  <li><i class="fa fa-times"></i> <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-</ul>
+<div class="project-title">
+  <ul class="project-menu">
+    <li><i class="fa fa-pencil-square-o"></i> <%= link_to '', edit_project_path(@project) %> </li>
+    <li><i class="fa fa-times"></i> <%= link_to '', @project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+  <h1><%= @project.title %></h1>
+  <p> <%= @project.description %> </p>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
 
 <table class="pure-table pure-table-horizontal pure-table-striped">
   <thead>

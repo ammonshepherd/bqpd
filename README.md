@@ -9,4 +9,14 @@ for production.
 
 # Development
 
-Clone the repo and run `rails s`
+Clone the repo 
+
+`git clone https://github.com/mossiso/bqpd`
+
+Install gems
+
+`bundle`
+
+Start the web service
+
+`rails s`
