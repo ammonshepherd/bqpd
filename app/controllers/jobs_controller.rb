@@ -1,3 +1,4 @@
+require 'open3'
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
@@ -21,10 +22,18 @@ class JobsController < ApplicationController
   def edit
   end
 
+  def run
+    Open3.popen3(@job.task.command) {|i,o,e,t|
+      @job.log =  o.read 
+    }
+  end
+
   # POST /jobs
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
+
+    run
 
     respond_to do |format|
       if @job.save
@@ -35,6 +44,7 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /jobs/1
@@ -80,6 +90,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :command)
+      params.require(:job).permit(:task_id)
     end
 end

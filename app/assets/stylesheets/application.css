@@ -44,3 +44,15 @@ a { text-decoration: none; }
 .button-large  { font-size: 110%; }
 .button-xlarge { font-size: 125%; }
 
+.form-field {
+  margin: 20px 0px;
+}
+
+.command {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 4px 8px;
+}

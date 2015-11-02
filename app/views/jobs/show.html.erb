@@ -2,18 +2,23 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @job.title %>
+  <%= @job.task.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @job.description %>
+  <%= @job.task.description %>
 </p>
 
 <p>
   <strong>Command:</strong>
-  <%= @job.command %>
+  <span class="command"><%= @job.task.command %></span>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+
+<p>
+  <strong>Log:</strong>
+  <pre class="job-log"><%= @job.log %></pre>
+</p>
+
+<%= link_to 'Back', :back %>

@@ -15,7 +15,6 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.title %></td>
         <td><%= job.description %></td>
         <td><%= job.command %></td>
         <td><%= link_to 'Show', job %></td>

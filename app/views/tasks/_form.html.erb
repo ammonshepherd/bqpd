@@ -1,4 +1,4 @@
-<%= form_for(@task, html: {class: "pure-form pure-form-stacked"}) do |f| %>
+<%= form_for(@task, html: {class: "pure-form pure-form-aligned"}) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -10,20 +10,27 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
+  <div class="form-field">
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
+
+  <div class="form-field">
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :project %><br>
+
+  <div class="form-field">
+    <%= f.label :command %>
+    <%= f.text_field :command %>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :project %>
     <p>Select the project this task belongs to</p>
     <%= f.select(:project_id, Project.options_list) %>
   </div>
+
   <div class="actions">
     <p><%= f.submit 'Submit', class: 'pure-button button-xlarge button-success' %></p>
   </div>

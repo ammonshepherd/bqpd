@@ -12,31 +12,41 @@
 </div>
 
 
-<table class="pure-table pure-table-horizontal pure-table-striped">
-  <thead>
-    <tr>
-      <th colspan="2"><h2>Available Tasks</h2></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @project.tasks.each do | task | %>
+<% if @project.tasks.exists? %>
+  <table class="pure-table pure-table-horizontal pure-table-striped">
+    <thead>
       <tr>
-        <td>
-          <h3><%= link_to task.title, edit_task_path(task) %></h3>
-          <p><%= task.description %></p>
-        </td>
-
-        <td>
-          <p><%= link_to 'RUN', deploy_path(@project), class: 'pure-button button-success button-xlarge' %></p>
-        </td>
+        <th colspan="2"><h2>Available Tasks</h2></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @project.tasks.each do | task | %>
+        <tr>
+          <td>
+            <h3><%= link_to task.title, edit_task_path(task) %></h3>
+            <p><%= task.description %></p>
+          </td>
+
+          <td>
+            <%= button_to "RUN", { controller: "jobs", action: "create" }, params: {"job[task_id]" => task.id }, form_class: 'run-job-form' %>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= link_to 'Create a New Task', new_task_path, class: "pure-button button-secondary button-small" %>
+<% end %>
 
 
-
-<% @project.jobs.each do | job | %>
-  <p><%= job.title %> </p>
+<% if @project.jobs.exists? %>
+  <h3>Completed Jobs</h3>
+  <dl class="completed-jobs">
+  <% @project.jobs.each do | job | %>
+    <dt><%= link_to job.task.title , job %> (<%= job.created_at %>)</dt>
+      <dd><code class="command"><%= job.task.command %></code></dd>
+  <% end %>
+  </dl>
 <% end %>
