@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
 
   has_many :tasks
-  has_many :jobs, through: :tasks
+  has_many :jobs, -> {order "created_at DESC"}, through: :tasks
 
   def default_task
     # if default_task_id = nil assign variable task_id to the first task associated to project
