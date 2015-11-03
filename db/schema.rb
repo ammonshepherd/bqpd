@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923192506) do
+ActiveRecord::Schema.define(version: 20151103200517) do
 
   create_table "jobs", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150923192506) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "default_task_id"
+    t.string   "repo"
   end
 
   add_index "projects", ["default_task_id"], name: "index_projects_on_default_task_id"
