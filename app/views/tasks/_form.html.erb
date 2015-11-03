@@ -10,28 +10,31 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-field">
+
+  <fieldset>
+  <div class="pure-control-group form-field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="form-field">
+  <div class="pure-control-group form-field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_field :description %>
   </div>
 
-  <div class="form-field">
+  <div class="pure-control-group form-field">
     <%= f.label :command %>
     <%= f.text_field :command %>
   </div>
 
-  <div class="form-field">
+  <div class="pure-controls form-field">
     <%= f.label :project %>
     <p>Select the project this task belongs to</p>
     <%= f.select(:project_id, Project.options_list) %>
   </div>
 
-  <div class="actions">
+  <div class="pure-controls actions">
     <p><%= f.submit 'Submit', class: 'pure-button button-xlarge button-success' %></p>
   </div>
+  </fieldset>
 <% end %>
