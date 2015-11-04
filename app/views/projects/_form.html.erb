@@ -27,6 +27,11 @@
     <%= f.text_field :repo %>
   </div>
 
+
+  <div class="pure-control-group form-field">
+    <%= f.label :branch %>
+    <%= f.text_field :branch, {value: "master"} %>
+  </div>
   <div class="pure-controls actions">
     <%= f.submit 'Update', class: 'pure-button button-xlarge button-success' %>
   </div>

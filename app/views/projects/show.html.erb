@@ -8,7 +8,9 @@
     <li><%= link_to '', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-times" %></li>
   </ul>
   <h1><%= @project.title %></h1>
-  <p> <%= @project.description %> </p>
+  <p>Description: <%= @project.description %> </p>
+  <p>Repository: <%= @project.repo %> </p>
+  <p>Branch: <%= @project.branch %> </p>
 </div>
 
 
