@@ -16,15 +16,30 @@ class Project < ActiveRecord::Base
     # end
   end
 
+  def friendly_id
+    title.downcase.gsub(/\W+/, '-')
+  end
+
   def has_tasks
     # if the project has tasks, return a not empty, if no tasks, return empty
-    
     !tasks.empty?
   end
 
   def self.options_list
     Project.all.to_a.map! {|project| [project.title, project.id] }
+  end
 
+  def repo_exists
+    @repo = friendly_id
+    @repo_dir = Rails.root.join("tmp/repos/#{@repo}")
+    
+    if Dir.exist? @repo_dir
+      system %{cd #{@repo_dir}; git pull}
+    else
+      system %{mkdir -p #{@repo_dir}; cd #{@repo_dir}; git clone -b #{branch} #{repo} . }
+    end
+
+    @repo_dir
   end
 
 end

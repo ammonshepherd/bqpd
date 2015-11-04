@@ -24,9 +24,13 @@ class JobsController < ApplicationController
   end
 
   def run
-    Open3.popen3(@job.task.command) {|i,o,e,t|
+    @repo_dir = @job.task.project.repo_exists
+
+    Open3.popen3(@job.task.command, :chdir=>@repo_dir) {|i,o,e,t|
       @job.log =  o.read 
     }
+
+
   end
 
   # POST /jobs
